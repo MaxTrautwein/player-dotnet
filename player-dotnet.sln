@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client-dotnet", "client-dotnet\client-dotnet.csproj", "{00A37932-3823-45AB-9230-2372594358C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "player-dotnet", "player-dotnet.csproj", "{00A37932-3823-45AB-9230-2372594358C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
