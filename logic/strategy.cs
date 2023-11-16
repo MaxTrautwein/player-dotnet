@@ -13,6 +13,7 @@ public class Strategy
             Console.WriteLine("Table Null");
             return new Bet(0);
         }
+        return new Bet(table.minimumBet);
         
         var ourPlayer = table.players[table.activePlayer];
 
