@@ -5,6 +5,8 @@ public class Card
     
     public int Val()
     {
+        Console.WriteLine("###########");
+        Console.WriteLine(rank.ToString());
         switch (this.rank)
         {
             case Rank.A:
