@@ -8,12 +8,13 @@ public class Strategy
         // fold on null data
         System.Diagnostics.Debug.WriteLine("#########################");
         Console.WriteLine("#########################");
+        return new Bet(100);
         if (table is null)
         {
             Console.WriteLine("Table Null");
             return new Bet(0);
         }
-        return new Bet(table.minimumBet);
+        
         
         var ourPlayer = table.players[table.activePlayer];
 
