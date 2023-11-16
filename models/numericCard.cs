@@ -13,7 +13,7 @@ public class numericCard
     }
 
 
-    public numericCard[] Transformation(Card[] allCards)
+    public static numericCard[] TransformCards(Card[] allCards)
     {
         numericCard[] result = null;
 
@@ -27,5 +27,20 @@ public class numericCard
         
         
         return result;
+    }
+
+    public static void debug(numericCard[] res)
+    {
+        Console.WriteLine("------------------------------------------------------");
+        Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        Console.WriteLine("------------------------------------------------------");
+
+        foreach (var eintrag  in res)
+        {
+            Console.WriteLine(eintrag);
+        }
+        Console.WriteLine("------------------------------------------------------");
+        Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        Console.WriteLine("------------------------------------------------------");
     }
 }
