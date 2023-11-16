@@ -47,7 +47,8 @@ public class Card
                 return 2;
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(rank), rank, null);
+                
+                throw new ArgumentOutOfRangeException(nameof(rank), rank, this.rank.ToString());
         }
 
         return 0;
