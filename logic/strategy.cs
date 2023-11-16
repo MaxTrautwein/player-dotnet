@@ -14,6 +14,11 @@ public class Strategy
         Card[] allCards = AllCards(table.players[table.activePlayer].cards, table.communityCards);
         var numerischeKarte = numericCard.TransformCards(allCards);
 
+        if (table.communityCards?.Length == 0)
+        {
+            return new Bet(table.minimumRaise);
+        }
+        
         if ( compares.HasPair(numerischeKarte) > 0 )
         {
             return new Bet(table.minimumRaise);

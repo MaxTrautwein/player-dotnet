@@ -5,6 +5,9 @@ public class Card
     
     public int Val()
     {
+        Console.WriteLine("###########");
+        Console.WriteLine(rank.ToString());
+        
         switch (this.rank)
         {
             case Rank.A:
@@ -47,7 +50,8 @@ public class Card
                 return 2;
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(rank), rank, null);
+                return 14;
+               // throw new ArgumentOutOfRangeException(nameof(rank), rank, this.rank.ToString());
         }
 
         return 0;
