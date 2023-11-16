@@ -51,6 +51,22 @@ public class Card
             default:
                 Console.WriteLine("###########");
                 Console.WriteLine(rank.ToString());
+                if (rank == Rank._2) Console.WriteLine("2");
+                if (rank == Rank._3) Console.WriteLine("3");
+                if (rank == Rank._4) Console.WriteLine("4");
+                if (rank == Rank._5) Console.WriteLine("5");
+                if (rank == Rank._6) Console.WriteLine("6");
+                if (rank == Rank._7) Console.WriteLine("7");
+                if (rank == Rank._8) Console.WriteLine("8");
+                if (rank == Rank._9) Console.WriteLine("9");
+                if (rank == Rank._10) Console.WriteLine("10");
+                if (rank == Rank.J) Console.WriteLine("11");
+                if (rank == Rank.Q) Console.WriteLine("12");
+                if (rank == Rank.K) Console.WriteLine("13");
+                if (rank == Rank.A) Console.WriteLine("14");
+                
+                Console.WriteLine("###########");
+                
                 return 14;
                // throw new ArgumentOutOfRangeException(nameof(rank), rank, this.rank.ToString());
         }
