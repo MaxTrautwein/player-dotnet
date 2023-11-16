@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+using client_dotnet.logic;
 using client_dotnet.models;
 
 public class Strategy
@@ -9,12 +11,19 @@ public class Strategy
         var ourPlayer = table.players[table.activePlayer];
 
         
-
         Card[] allCards = AllCards(table.players[table.activePlayer].cards, table.communityCards);
-        var card = numericCard.TransformCards(allCards);
+        var numerischeKarte = numericCard.TransformCards(allCards);
+
+        if ( compares.HasPair(numerischeKarte) > 0 )
+        {
+            return new Bet(table.minimumRaise);
+        }
+        else
+        {
+            return new Bet(0);
+        }
+
         
-        
-        return new Bet(table.minimumBet);
     }
 
     public static Card[] AllCards(Card[] playerCards, Card[] commCards)

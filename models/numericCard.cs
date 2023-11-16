@@ -15,16 +15,12 @@ public class numericCard
 
     public static numericCard[] TransformCards(Card[] allCards)
     {
-        numericCard[] result = null;
+        numericCard[] result = Array.Empty<numericCard>();
 
         foreach (var card in allCards)
         {
             result.Append(new numericCard(card.Val(), card.suit));
         }
-        
-        
-        
-        
         
         return result;
     }
