@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+using client_dotnet.logic;
 using client_dotnet.models;
 
 public class Strategy
@@ -8,52 +10,32 @@ public class Strategy
         
         var ourPlayer = table.players[table.activePlayer];
 
-        if (HasSimilarRanks(ourPlayer) == false && HasSimilarSuits(ourPlayer) == false)
+        
+        Card[] allCards = AllCards(table.players[table.activePlayer].cards, table.communityCards);
+        var numerischeKarte = numericCard.TransformCards(allCards);
+
+        if ( compares.HasPair(numerischeKarte) > 0 )
+        {
+            return new Bet(table.minimumRaise);
+        }
+        else
         {
             return new Bet(0);
         }
-        return new Bet(table.minimumBet);
+
+        
     }
-    
-    
-    
-    static bool HasSimilarRanks(Player player)
+
+    public static Card[] AllCards(Card[] playerCards, Card[] commCards)
     {
-        if (player?.cards == null || player.cards.Length < 2)
-            return false;
-
-        for (int i = 0; i < player.cards.Length; i++)
-        {
-            for (int j = i + 1; j < player.cards.Length; j++)
-            {
-                if (player.cards[i].rank == player.cards[j].rank)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        Card[] allCards;
+         allCards = playerCards.Concat(commCards).ToArray();
+         
+         return allCards;
     }
-
-    static bool HasSimilarSuits(Player player)
-    {
-        if (player?.cards == null || player.cards.Length < 2)
-            return false;
-
-        for (int i = 0; i < player.cards.Length; i++)
-        {
-            for (int j = i + 1; j < player.cards.Length; j++)
-            {
-                if (player.cards[i].suit == player.cards[j].suit)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
+    
+    
+    
     
 }
 
