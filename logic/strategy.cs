@@ -6,6 +6,7 @@ public class Strategy
     
     public static Bet Decide(Table? table) {
         // fold on null data
+        System.Diagnostics.Debug.WriteLine("#########################");
         Console.WriteLine("#########################");
         if (table is null)
         {
