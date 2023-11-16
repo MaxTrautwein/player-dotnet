@@ -7,12 +7,17 @@ public class Strategy
         if (table is null) return new Bet(0);
         
         var ourPlayer = table.players[table.activePlayer];
-        
-        
+
+        if (HasSimilarRanks(ourPlayer) == false && HasSimilarSuits(ourPlayer) == false)
+        {
+            return new Bet(0);
+        }
         return new Bet(table.minimumBet);
     }
     
-    public bool HasSimilarRanks(Player player)
+    
+    
+    static bool HasSimilarRanks(Player player)
     {
         if (player?.cards == null || player.cards.Length < 2)
             return false;
@@ -31,7 +36,7 @@ public class Strategy
         return false;
     }
 
-    public bool HasSimilarSuits(Player player)
+    static bool HasSimilarSuits(Player player)
     {
         if (player?.cards == null || player.cards.Length < 2)
             return false;
