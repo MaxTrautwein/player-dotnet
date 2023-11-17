@@ -34,9 +34,10 @@ public class compares
         int valOne = startingHand[0].Val();
         int valTwo = startingHand[1].Val();
 
-        if (valOne == 14 && valTwo == 13)
+        if ((valOne == 14 && valTwo == 13) || (valOne == 13 && valTwo == 14))
         {
-            return true;
+            if (startingHand[0].suit == startingHand[1].suit)
+                return true;
         }
 
         return false;
