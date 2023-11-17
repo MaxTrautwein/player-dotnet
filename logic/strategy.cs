@@ -13,24 +13,30 @@ public class Strategy
         int activePlayer = table.activePlayer;
 
         Card[] allCards = AllCards(table.players[activePlayer].cards, table.communityCards);
-        var numerischeKarte = numericCard.TransformCards(allCards);
+        var numericCardsArray = numericCard.TransformCards(allCards);
 
-        if (compares.HasPair(numerischeKarte) > 0)
+
+        /*
+        if (compares.HasAssKing_Suited(table.players[activePlayer].cards))
+        {
+            return new Bet(table.minimumRaise + 10);
+        }
+        */
+
+        if (table.communityCards?.Length == 0)
         {
             return new Bet(table.minimumRaise);
         }
 
-        if (compares.HasAssKing_Suited(table.players[activePlayer].cards))
+        if (compares.HasPair(numericCardsArray) > 0)
         {
-            return new Bet(2 * table.minimumRaise);
+            return new Bet(table.minimumRaise);
         }
 
         else
         {
             return new Bet(0);
         }
-
-        return new Bet(0);
     }
 
 
