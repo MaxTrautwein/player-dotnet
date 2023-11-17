@@ -34,4 +34,20 @@ public class compares
 
 
     }
+
+    public static bool HasAssKing_Suited(Card[] startingHand)
+    {
+        Card cardOne = startingHand[0];
+        Card cardTwo = startingHand[1];
+
+        int valOne = startingHand[0].Val();
+        int valTwo = startingHand[1].Val();
+
+        if (valOne == 14 && valTwo == 13)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
