@@ -101,4 +101,22 @@ public class compares
 
         return false;
     }
+
+    public static bool HasKingQueen_suited(Card[] startingHand)
+    {
+        int valOne = startingHand[0].Val();
+        int valTwo = startingHand[1].Val();
+
+        if ((valOne == 13 && valTwo == 12) || (valOne == 12 && valTwo == 13))
+        {
+            if (startingHand[0].suit == startingHand[1].suit)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
 }

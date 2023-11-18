@@ -78,7 +78,12 @@ public class Strategy
         {
             return new Bet(table.minimumRaise);
         }
-        
+
+
+        if (compares.HasKingQueen_suited(myCards))
+        {
+            return new Bet(table.minimumRaise);
+        }
         
         else
         {
