@@ -21,7 +21,8 @@ public class NumericCard
         {
             result.Append(new NumericCard(card.Val(), card.suit));
         }
-        Debug(result);
+        // debugging the numericCard stuff
+       // Debug(result);
         return result;
     }
 
