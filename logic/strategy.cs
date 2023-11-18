@@ -45,6 +45,11 @@ public class Strategy
                 return new Bet(table.minimumRaise * 2);
             }
 
+            if (compares.HasKingQueen_suited(myCards))
+            {
+                return new Bet(table.minimumRaise * 2);
+            }
+
 
             return new Bet(table.minimumRaise);
         }
@@ -78,13 +83,13 @@ public class Strategy
         {
             return new Bet(table.minimumRaise);
         }
-
-
+        
+        // König Dame gleichfarbig
         if (compares.HasKingQueen_suited(myCards))
         {
             return new Bet(table.minimumRaise);
         }
-        
+
         else
         {
             return new Bet(0);
