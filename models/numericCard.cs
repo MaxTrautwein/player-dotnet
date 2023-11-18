@@ -1,31 +1,31 @@
 namespace client_dotnet.models;
 
-public class numericCard
+public class NumericCard
 {
     public int numRank;
     public Suit numSuit;
     
 
-    public numericCard(int numRank, Suit numSuit)
+    public NumericCard(int numRank, Suit numSuit)
     {
         this.numRank = numRank;
         this.numSuit = numSuit;
     }
 
 
-    public static numericCard[] TransformCards(Card[] allCards)
+    public static NumericCard[] TransformCards(Card[] allCards)
     {
-        numericCard[] result = Array.Empty<numericCard>();
+        NumericCard[] result = Array.Empty<NumericCard>();
 
         foreach (var card in allCards)
         {
-            result.Append(new numericCard(card.Val(), card.suit));
+            result.Append(new NumericCard(card.Val(), card.suit));
         }
-        
+        Debug(result);
         return result;
     }
 
-    public static void debug(numericCard[] res)
+    public static void Debug(NumericCard[] res)
     {
         Console.WriteLine("------------------------------------------------------");
         Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
