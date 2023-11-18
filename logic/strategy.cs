@@ -13,15 +13,25 @@ public class Strategy
         int activePlayer = table.activePlayer;
 
         Card[] allCards = AllCards(table.players[activePlayer].cards, table.communityCards);
-        var numericCardsArray = numericCard.TransformCards(allCards);
+        var numericCardsArray = NumericCard.TransformCards(allCards);
 
-        // wenn keine community cards liegen aber wir nen assKing suited haben dann 2*minRaise
+        // wenn keine community cards liegen aber:
+        // ... wir nen assKing suited haben
+        //      oder
+        // ... wir nen AssKing offsuited haben
+        //      dann minRaise * 2
         if (table.communityCards?.Length == 0)
         {
             if (compares.HasAssKing_Suited(table.players[activePlayer].cards))
             {
-                return new Bet(table.minimumRaise + 2);
+                return new Bet(table.minimumRaise * 2);
             }
+
+            if (compares.HasAssKing_OffSuited(table.players[activePlayer].cards))
+            {
+                return new Bet(table.minimumRaise * 2);
+            }
+
             return new Bet(table.minimumRaise);
         }
 
@@ -32,6 +42,11 @@ public class Strategy
         }
 
         if (compares.HasAssKing_Suited(table.players[activePlayer].cards))
+        {
+            return new Bet(table.minimumRaise);
+        }
+
+        if (compares.HasAssKing_OffSuited(table.players[activePlayer].cards))
         {
             return new Bet(table.minimumRaise);
         }

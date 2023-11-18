@@ -4,7 +4,7 @@ namespace client_dotnet.logic;
 
 public class compares
 {
-    public static int HasPair(numericCard[] allNumericCards)
+    public static int HasPair(NumericCard[] allNumericCards)
     {
         int highestPair = 0;
         int numPairs = 0;
@@ -37,7 +37,29 @@ public class compares
         if ((valOne == 14 && valTwo == 13) || (valOne == 13 && valTwo == 14))
         {
             if (startingHand[0].suit == startingHand[1].suit)
+            {
                 return true;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
+    public static bool HasAssKing_OffSuited(Card[] startingHand)
+    {
+        int valOne = startingHand[0].Val();
+        int valTwo = startingHand[1].Val();
+
+        if ((valOne == 14 && valTwo == 13) || (valOne == 13 && valTwo == 14))
+        {
+            if (startingHand[0].suit != startingHand[1].suit)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         return false;
