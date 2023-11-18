@@ -36,8 +36,6 @@ public class Card
             default:
                 throw new ArgumentOutOfRangeException(nameof(rank), rank, null);
         }
-
-        return 0;
     }
 
     
