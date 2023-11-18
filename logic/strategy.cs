@@ -11,47 +11,75 @@ public class Strategy
 
         var ourPlayer = table.players[table.activePlayer];
         int activePlayer = table.activePlayer;
+        Card[] myCards = table.players[activePlayer].cards;
 
         Card[] allCards = AllCards(table.players[activePlayer].cards, table.communityCards);
-        var numericCardsArray = NumericCard.TransformCards(allCards);
+        var numericAllCards = NumericCard.TransformCards(allCards);
 
         // wenn keine community cards liegen aber:
         // ... wir nen assKing suited haben
         //      oder
         // ... wir nen AssKing offsuited haben
+        //      oder
+        // ... wir AceJack suited haben
         //      dann minRaise * 2
         if (table.communityCards?.Length == 0)
         {
-            if (compares.HasAssKing_Suited(table.players[activePlayer].cards))
+            if (compares.HasAssKing_Suited(myCards))
             {
                 return new Bet(table.minimumRaise * 2);
             }
 
-            if (compares.HasAssKing_OffSuited(table.players[activePlayer].cards))
+            if (compares.HasAceKing_OffSuited(myCards))
             {
                 return new Bet(table.minimumRaise * 2);
             }
 
+            if (compares.HasAceJack_Suited(myCards))
+            {
+                return new Bet(table.minimumRaise * 2);
+            }
+
+            if (compares.HasAceQueen_suited(myCards))
+            {
+                return new Bet(table.minimumRaise * 2);
+            }
+
+
             return new Bet(table.minimumRaise);
         }
 
-
-        if (compares.HasPair(numericCardsArray) > 0)
+        // Paar
+        if (compares.HasPair(numericAllCards) > 0)
         {
             return new Bet(table.minimumRaise);
         }
 
-        if (compares.HasAssKing_Suited(table.players[activePlayer].cards))
+        // Ass King gleichfarbig
+        if (compares.HasAssKing_Suited(myCards))
         {
             return new Bet(table.minimumRaise);
         }
 
-        if (compares.HasAssKing_OffSuited(table.players[activePlayer].cards))
+        // Ass King anderer Farben
+        if (compares.HasAceKing_OffSuited(myCards))
         {
             return new Bet(table.minimumRaise);
         }
 
+        // Ass Bube gleichfarbig
+        if (compares.HasAceJack_Suited(myCards))
+        {
+            return new Bet(table.minimumRaise);
+        }
 
+        // Ass Dame gleichfarbig
+        if (compares.HasAceQueen_suited(myCards))
+        {
+            return new Bet(table.minimumRaise);
+        }
+        
+        
         else
         {
             return new Bet(0);

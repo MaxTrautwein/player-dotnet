@@ -47,7 +47,7 @@ public class compares
         return false;
     }
 
-    public static bool HasAssKing_OffSuited(Card[] startingHand)
+    public static bool HasAceKing_OffSuited(Card[] startingHand)
     {
         int valOne = startingHand[0].Val();
         int valTwo = startingHand[1].Val();
@@ -55,6 +55,43 @@ public class compares
         if ((valOne == 14 && valTwo == 13) || (valOne == 13 && valTwo == 14))
         {
             if (startingHand[0].suit != startingHand[1].suit)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
+
+    public static bool HasAceJack_Suited(Card[] startingHand)
+    {
+        int valOne = startingHand[0].Val();
+        int valTwo = startingHand[1].Val();
+
+        if ((valOne == 14 && valTwo == 11) || (valOne == 11 && valTwo == 14))
+        {
+            if (startingHand[0].suit == startingHand[1].suit)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
+    public static bool HasAceQueen_suited(Card[] startingHand)
+    {
+        int valOne = startingHand[0].Val();
+        int valTwo = startingHand[1].Val();
+
+        if ((valOne == 14 && valTwo == 12) || (valOne == 12 && valTwo == 14))
+        {
+            if (startingHand[0].suit == startingHand[1].suit)
             {
                 return true;
             }
